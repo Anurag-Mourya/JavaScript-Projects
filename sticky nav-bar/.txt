@@ -1,0 +1,5 @@
+to add class in js --classlist.add('class name');
+to remove class in js --classlist.remove('class name');
+
+-- pageYOffset ---- The pageYOffset property returns the pixels a document has scrolled from the upper left corner of the window.
+The pageYOffset property is equal to the scrollY property.

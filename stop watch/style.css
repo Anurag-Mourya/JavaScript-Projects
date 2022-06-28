@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+   background: rgba(16, 21, 46, 0.712);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+#container{
+    color: white;
+}
+
+.digit{
+    font-size: 150px;
+}
+
+.text{
+    font-size: 40px;
+}
+
+.btn-container{
+    text-align: center;
+
+}
+
+.btn{
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 20px;
+    border: none;
+    color: white;
+   cursor: pointer;
+}
+
+#Start{
+background: green;
+}
+
+#Stop{
+background: rgba(83, 116, 168, 0.76);
+}
+
+#Reset{
+    background: red;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprecture Convertor</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            background: pink;
+            padding: 50px;
+
+        }
+
+        .inp {
+            font-size: 30px;
+
+        }
+
+        .input-div {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temprecture Convertor</h1>
+    <div class="container">
+
+        <div class="input-div">
+            <label>Celsius</label><br>
+            <input type="number" id="cel" class="inp" value="0" oninput="changecel();">
+        </div>
+
+        <div class="input-div">
+            <label>Farenheight</label><br>
+            <input type="number" id="frh" class="inp" value="32" oninput="changefrh();">
+        </div>
+    </div>
+
+    <script>
+
+        // BY USING addeventlistener...
+
+        var cel  = document.getElementById("cel");
+        var frh = document.getElementById("frh");
+
+        cel.addEventListener('input', function(){
+           var c = this.value;
+           var f = (c * 9/5) + 32;
+           if(!Number.Isinteger){
+               f = f.toFixed(4);
+           }
+           frh.value = f; 
+
+        })
+
+        frh.addEventListener('input', function(){
+         var f = this.value;
+         var c = (f - 32) * 5/9;
+
+         if(!Number.Isinteger){
+
+            c = c.toFixed(4);
+         }
+         cel.value = c;
+
+        });
+
+
+
+            // function method
+
+        // var cel = document.getElementById("cel").value;
+        // var frh = document.getElementById("frh");
+
+        // function changecel() {
+        //     var c = cel;
+        //     var f = (c * 9 / 5) + 32;
+        //     if(!Number.IsInteger){
+        //         f = f.toFixed(4);
+        //     }
+        //     frh.value = f;
+        // };
+
+        // function changefrh(){
+        //     var f = frh.value;
+        //     var c = (f - 32) * 5/9;
+
+        //     if(!Number.IsInteger){
+        //         c = c.toFixed(4);
+        //     }
+        //       cel.value = c; //here c = cel.value is wrong..... 
+        //     }
+
+           
+        
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
