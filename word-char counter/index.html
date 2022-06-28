@@ -48,19 +48,13 @@
         <span id="word">0 </span> words and
         <span id="char">0 </span> Charactor
     </p>
-
-
     
-
     <script>
         var textbox = document.getElementById("text-box");
-
         textbox.addEventListener('input', function () {
             var text = this.value;
             var char = text.length;
             document.getElementById("char").innerHTML = char;
-
-
             text = text.trim();//for remove the extra spaces from starting and end point....
             var word = text.split(" ");
             var clinWord = word.filter(function(elm){
@@ -72,8 +66,6 @@
             // or//
 
             document.getElementById("word").innerHTML = clinWord.length;
-
-
         });
 
     </script>
