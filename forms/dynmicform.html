@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .main {
+            height: 700px;
+            width: 1000px;
+            background: aqua;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 100px;
+            background: red;
+        }
+
+        .content {
+            height: 600px;
+
+            background: rgba(255, 255, 255, 0.609);
+            position: relative;
+        }
+
+        .footer {
+            height: 100px;
+            background: black;
+
+        }
+
+        form {
+            height: 500px;
+            width: 569px;
+            background: rgb(255, 255, 255);
+            margin: 0 auto;
+
+            position: relative;
+            top: 30px;
+            border: 2px solid;
+            border-radius: 7%;
+        }
+
+        form>li {
+            width: 477px;
+            margin: 0 auto;
+            padding: 9px;
+            list-style: none;
+            /* background-color: aquamarine; */
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        input::placeholder {
+            font-size: 14px;
+        }
+
+        input {
+            background: rgb(255, 255, 255);
+
+            border-radius: 9px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        input:hover {
+            border: 2px solid red;
+            box-shadow: 1px 1px 1px 0px black;
+        }
+
+        li h1 {
+            border: 2px solid;
+
+            height: 41px;
+            font-size: 32px;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        li h1:hover {
+            background: black;
+            color: white;
+
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        #sub {
+            cursor: pointer;
+            padding: 9px;
+            box-shadow: 2px 2px 3px 3px black;
+        }
+
+        #sub:hover {
+            background: black;
+            color: white;
+            border: none;
+
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        .error {
+            margin: 0px;
+            color: red;
+            font-weight: 10;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+   
+    <div class="main">
+        <div class="header"></div>
+        <div class="content">
+
+            <form>
+                <li>
+                    <h1> Registation forum </h1>
+                </li>
+                <li>Your Name: <input type="text" name="Uname" placeholder="Username" id="un"></li>
+
+                <li>Contact No.: <input type="number" placeholder="Your Contact Number" id="num"></li>
+
+                <li>Your Email: <input type="email" placeholder="Your Email" id="em"></li>
+
+                <li>Your Password: <input type="password" placeholder="Password" id="pasw">
+                    <i class="fa fa-eye" aria-hidden="true" onclick="showpw()"></i>
+                </li>
+               
+        
+                <li><input type="submit" value="Registation"  id="sub"></li>
+
+            </form>
+        </div>
+
+        <div class="footer"></div>
+        
+    </div>
+    <script>
+        function showpw(){
+            let x = document.getElementById("pasw");
+            if(x.type == "password"){
+                x.type = "text";
+            }else{
+                x.type = "password"
+            }
+        }
+
+
+        function vld() {
+            var un = document.getElementById("un").value;
+            un = un.trim(); //white space is not considered as interger or num...
+            if (un == "") {
+                alert("plz enter your name..");
+                document.getElementById("un").focus();
+                document.getElementById("un").value = "";
+                return false;
+            }
+
+            // var letters = /^[A-Za-z] + $/;
+            // if (!(un.match(letters))) {
+            //     alert("only letters allowed");
+
+            //     document.getElementById("un").focus();
+            //     document.getElementById("un").value = "";
+            //     return false;
+            // }
+            if (un.length < 3) {
+                alert("letters at least three charector");
+                document.getElementById("un").focus();
+                document.getElementById("un").value = "";//letters is not deleted;
+                return false;
+            }
+            var mob = document.getElementById("num").value;
+            if (mob == "") {
+                alert("fill contact area");
+                document.getElementById("num").focus();
+                document.getElementById("un").value = "";
+                return false;
+            }
+            if (mob.length != 10) {
+                alert("contact mo should be 10 digit..");
+                document.getElementById("num").focus();
+                document.getElementById("un").value = "";
+                return false;
+            }
+            if (mob[0] < 6) {//first digit of no is less than 6..
+                alert("Enter a valid contact no..");
+                document.getElementById("num").focus();
+                document.getElementById("un").value = "";
+                return false;
+            }
+            var eml = document.getElementById("em").value;
+            if (eml == "") {
+                alert("Email is blanck..");
+                document.getElementById("em").value = "";
+                document.getElementById("em").focus();
+                return false;
+            } else {
+                var atpos = eml.indexOf("@");
+                var dotpos = eml.lastIndexOf(".");
+                if (atpos < 1 || atpos + 2 > dotpos || dotpos + 2 >= eml.length) {
+                    alert("your email formet is wrong");
+                    document.getElementById("em").focus();
+                    return false;
+
+                }
+                var pw = document.getElementById("pasw").value;
+                pw = pw.trim();
+                if (pw == "") {
+                    alert("Enter the password");
+                    document.getElementById("pasw").value = "";
+                    document.getElementById("pasw").focus();
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
