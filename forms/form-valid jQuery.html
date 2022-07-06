@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .main {
+            height: 700px;
+            width: 1000px;
+            background: aqua;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 100px;
+            background: red;
+        }
+
+        .content {
+            height: 600px;
+
+            background: rgba(255, 255, 255, 0.609);
+            position: relative;
+        }
+
+        .footer {
+            height: 100px;
+            background: black;
+
+        }
+
+        form {
+            height: 500px;
+            width: 569px;
+            background: rgb(255, 255, 255);
+            margin: 0 auto;
+
+            position: relative;
+            top: 30px;
+            border: 2px solid;
+            border-radius: 7%;
+        }
+
+        form>li {
+            width: 477px;
+            margin: 0 auto;
+            padding: 9px;
+            list-style: none;
+            /* background-color: aquamarine; */
+            text-align: center;
+            /* font-size: 22px; */
+            font-weight: bold;
+        }
+
+        input::placeholder {
+            font-size: 14px;
+        }
+
+        input {
+            background: rgb(255, 255, 255);
+
+            border-radius: 9px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        input:hover {
+            border: 2px solid red;
+            box-shadow: 1px 1px 1px 0px black;
+        }
+
+        li h1 {
+            border: 2px solid;
+
+            height: 41px;
+            font-size: 32px;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        li h1:hover {
+            background: black;
+            color: white;
+
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        #sub {
+            cursor: pointer;
+            padding: 9px;
+            box-shadow: 2px 2px 3px 3px black;
+        }
+
+        #sub:hover {
+            background: black;
+            color: white;
+            border: none;
+
+            box-shadow: 3px 3px 1px 0px black;
+        }
+
+        /* .error {
+            margin: 0px;
+            color: red;
+            font-weight: 10;
+            font-size: 15px;
+        } */
+
+        .center {
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header"></div>
+        <div class="content">
+
+            <form method="post">
+
+                <li>
+                    <h1> Registation forum </h1>
+                </li>
+                <li>Your Name: <input type="text" name="Uname" placeholder="Username" id="un"></li>
+                <div id="error-un" class="center"></div>
+
+                <li>Contact No.: <input type="number" placeholder="Your Contact Number" id="num"></li>
+                <div id="error-no" class="center"></div>
+
+                <li>Your Email: <input type="email" placeholder="Your Email" id="em"></li>
+                <div id="error-email" class="center"></div>
+
+                <li>Your Password: <input type="password" placeholder="Password" id="pasw">
+                    <div id="error-pass" class="center"></div>
+                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                </li>
+
+
+                <li><input type="submit" value="Registation" id="sub"></li>
+
+            </form>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#sub").click(function () {
+                    var user = $("#un").val();
+                    user = user.trim();
+                    if (user == "") {
+                        $("#error-un").html("** The username must be fill");
+                        $("#error-un").css('color', "red");
+                        $("#un").focus();
+                        $("#un").val("");
+                        return false;
+                    }
+                    if (user.length < 3) {
+                        $("#error-un").html("** The username must be 3 to 25 letters");
+                        $("#error-un").css('color', "red");
+                        $("#un").focus();
+                        $("#un").val("");
+                        return false;
+                    }
+                    if (user.length > 25) {
+                        $("#error-un").html("** The username must be less then 25 letters");
+                        $("#error-un").css({
+                            "color": "red"
+                        });
+                        $("#un").focus();
+                        $("#un").val("");
+                        return false;
+                    }
+
+                    var mobile = $("#num").val();
+                    mobile = mobile.trim();
+                    if (mobile.length != 10) {
+                        $("#error-no").html("** Mobile no must be 10 digit");
+                        $("#error-no").css({
+                            "color": "red",
+
+                        });
+                        $("#num").focus();
+                        $("#num").val("");
+                        return false;
+                    }
+                    if (mobile[0] < 6) {
+                        $("#error-no").html("** Mobile no is not allowed");
+                        $("#error-no").css({
+                            "color": "red",
+                        });
+                        $("#num").focus();
+                        $("#num").val("");
+                        return false;
+
+                    }
+
+                    var eml = $("#em").val();
+                    eml = eml.trim();
+                    if (eml == "") {
+                        $("#error-email").html("**Email is blancked");
+                        $("#error-email").css({
+                            "color": "red",
+                        });
+                        $("#em").focus();
+                        $("#em").val("");
+                        return false;
+                    } else {
+                        var atpos = eml.indexOf("@");
+                        var dotpos = eml.lastIndexOf(".");
+                        if (atpos < 1 || atpos + 2 > dotpos || dotpos + 2 >= eml.length) {
+                            $("#error-email").html("**Email is invalid");
+                            $("#error-email").css({
+                                "color": "red",
+                            });
+                            $("#em").focus();
+                            return false;
+                        }
+
+                    }
+
+                    var pw = $("#pasw").val();
+                    pw = pw.trim();
+                    if (pw == "") {
+                        $("#error-pass").html("**your password is empty");
+                        $("#error-pass").css({
+                            "color": "red",
+                        });
+                        $("#pasw").focus();
+                        return false;
+                    }
+                   
+                });
+                
+               
+            });
+        </script>
+
+</body>
+
+</html>
